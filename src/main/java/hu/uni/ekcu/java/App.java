@@ -1,5 +1,8 @@
 package hu.uni.ekcu.java;
 
+import hu.uni.ekcu.java.service.Notifier;
+import hu.uni.ekcu.java.service.NotifierStdErrImpl;
+import hu.uni.ekcu.java.service.NotifierStdOutImpl;
 import hu.uni.ekcu.java.service.PrimeService;
 import hu.uni.ekcu.java.service.QuadraticSolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +35,8 @@ public class App implements CommandLineRunner {
         QuadraticSolver.Equation equation = new QuadraticSolver.Equation(1, -1, -6);
         QuadraticSolver.Solution solution = solver.solve(equation);
         System.out.println(String.format("%f, %f", solution.getX1(), solution.getX2()));
+
+        Notifier notifier = new NotifierStdOutImpl();
+        notifier.notify("Hello World");
     }
 }
